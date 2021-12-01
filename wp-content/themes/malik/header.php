@@ -22,6 +22,27 @@
 	<body <?php body_class(); ?>>
 		<!-- Header One Start-->
         <header class="header-area header-transparent">
+            <div class="header_top_area d-none d-lg-block">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-9 col-xl-9 col-lg-8">
+                            <div class="top_mailing">
+                                <a href="faq.html#" class="theme-1"><i class="fal fa-envelope"></i><span class="__cf_email__" data-cfemail="c2a3a6afabac82a6adafa3abaceca1adaf">[email&#160;protected]</span></a>
+                                <a href="faq.html#" class="theme-2"><i class="fal fa-phone"></i>088889797697</a>
+                                <a href="faq.html#" class="theme-3"><i class="fal fa-map-marker-alt"></i>street 222, South Africa</a>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-3 col-lg-4 text-start text-md-end">
+                            <div class="top_social">
+                                <a href="faq.html#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="faq.html#" class="linkedin"><i class="fab fa-linkedin"></i></a>
+                                <a href="faq.html#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="faq.html#" class="instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="sticky-header" class="header_menu_area res_padd">
                 <div class="container">
                     <div class="row align-items-center">
@@ -35,7 +56,7 @@
                                         $image_height = $image[2];
                                         // var_dump($image_url);
                                         ?>
-                                        <a href="<?php site_url() ?>" class="custom-logo-link">
+                                        <a href="<?php echo site_url(); ?>" class="custom-logo-link">
                                             <img src="<?php echo $image_url; ?>">
                                         </a>
                                         <?php

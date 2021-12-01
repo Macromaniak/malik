@@ -13,9 +13,9 @@
                 </div>
 
                 <div class="offset-widget offset_searchbar mb-30">
-                    <form method="get" action="#">
+                    <form role="search" method="get" class="searchform group" action="<?php echo home_url( '/' ); ?>">
                         <div class="offset_search_content">
-                            <input type="search" placeholder="What are you searching for?">
+                            <input type="search" placeholder="What are you searching for?" value="<?php echo get_search_query() ?>" name="s">
                             <button type="submit" class="offset_search_button"><i class="fal fa-search"></i></button>
                         </div>
                     </form>
@@ -58,9 +58,9 @@
                 </div>
 
                 <div class="offset-widget offset_searchbar mb-30">
-                    <form method="get" action="#">
+                    <form role="search" method="get" class="searchform group" action="<?php echo home_url( '/' ); ?>">
                         <div class="offset_search_content">
-                            <input type="search" placeholder="What are you searching for?">
+                            <input type="search" placeholder="What are you searching for?" value="<?php echo get_search_query() ?>" name="s">
                             <button type="submit" class="offset_search_button"><i class="fal fa-search"></i></button>
                         </div>
                     </form>

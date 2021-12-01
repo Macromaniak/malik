@@ -1,4 +1,4 @@
-<?php die('newsfeed'); ?>
+<?php //die('newsfeed'); ?>
 <div class="nfeed_area pt-105 pb-90">
    <div class="container">
       <div class="row">

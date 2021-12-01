@@ -29,17 +29,22 @@
                     <div class="row align-items-center">
                         <div class="col-xxl-9 col-xl-9 col-lg-8">
                             <div class="top_mailing">
-                                <a href="faq.html#" class="theme-1"><i class="fal fa-envelope"></i><span class="__cf_email__" data-cfemail="c2a3a6afabac82a6adafa3abaceca1adaf">[email&#160;protected]</span></a>
-                                <a href="faq.html#" class="theme-2"><i class="fal fa-phone"></i>088889797697</a>
-                                <a href="faq.html#" class="theme-3"><i class="fal fa-map-marker-alt"></i>street 222, South Africa</a>
+                                <a href="mailto:<?php echo get_field('social_email', 'theme_options'); ?>" class="theme-1"><i class="fal fa-envelope"></i><span class="__cf_email__" data-cfemail="c2a3a6afabac82a6adafa3abaceca1adaf"><?php echo get_field('social_email', 'theme_options'); ?></span></a>
+
+                                <a href="tel:<?php echo $tel = get_field('header_right_phone', 'theme_options'); ?>" class="theme-2"><i class="fal fa-phone"></i><?php echo $tel; ?></a>
+
+                                <a href="#" class="theme-3"><i class="fal fa-map-marker-alt"></i><?php echo get_field('header_location', 'theme_options'); ?></a>
                             </div>
                         </div>
                         <div class="col-xxl-3 col-xl-3 col-lg-4 text-start text-md-end">
                             <div class="top_social">
-                                <a href="faq.html#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="faq.html#" class="google"><i class="fab fa-google-plus-g"></i></a>
-                                <a href="faq.html#" class="twitter"><i class="fab fa-twitter"></i></a>
-                                <a href="faq.html#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="<?php echo get_field('social_facebook', 'theme_options'); ?>" class="facebook"><i class="fab fa-facebook-f"></i></a>
+
+                                <a href="<?php echo get_field('social_linkedin', 'theme_options'); ?>" class="linkedin"><i class="fab fa-linkedin"></i></a>
+
+                                <a href="<?php echo get_field('social_twitter', 'theme_options'); ?>" class="twitter"><i class="fab fa-twitter"></i></a>
+
+                                <a href="<?php echo get_field('social_instagram', 'theme_options'); ?>" class="instagram"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -58,7 +63,7 @@
                                         $image_height = $image[2];
                                         // var_dump($image_url);
                                         ?>
-                                        <a href="<?php site_url() ?>" class="custom-logo-link">
+                                        <a href="<?php echo site_url(); ?>" class="custom-logo-link">
                                             <img src="<?php echo $image_url; ?>">
                                         </a>
                                         <?php
@@ -85,7 +90,7 @@
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xxl-3 col-xl-4 col-lg-2 col-md-6 col-6">
+                        <div class="col-xxl-3 col-xl-3 col-lg-2 col-md-6 col-6">
                             <div class="header-right d-flex align-items-center justify-content-end">
                                 <div class="header-sing d-inline-block d-none d-xl-block">
                                     <a class="g_btn hbtn_1 to_right1 rad-30" href="<?php echo get_site_url(); ?>/donation/">Make Donation<span></span></a>

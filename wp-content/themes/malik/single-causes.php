@@ -189,9 +189,10 @@ global $post;
                                     <a href="volunteer-details.html"><img src="<?php echo site_url().'/wp-content/themes/malik/assets/img/user.jpeg' ?>" alt="img"></a>
                                     <span class="check_sign"><i class="fal fa-check"></i></span>
                                 </div>
+                                <?php  ?>
                                 <div class="person_designation widget_mb25">
-                                    <h5 class="person_nam f_size24"><a href="volunteer-details.html">MR. Muhammad Ali</a></h5>
-                                    <span class="person_surname">Founder,Anarkoli Co.</span>
+                                    <h5 class="person_nam f_size24"><a href="volunteer-details.html"><?php echo get_the_author_meta( 'display_name', $post->post_author ) ?></a></h5>
+                                    <span class="person_surname"><?php echo get_the_author_meta('user_email', $post->post_author) ?></span>
                                 </div>
                                 <div class="feature_buttons widget_buttons">
                                     <a href="donation.html" class="g_btn hbtn_1 to_right1 i_left rad-30"><i class="fal fa-heart"></i>Donate Now<span></span></a>
@@ -201,8 +202,9 @@ global $post;
 
                             <div class="single_widget has_border post_widget mb-40">
                                 <div class="single_widget_title">
-                                    <h4 class="widget_title_text has_border">Donors Post</h4>
+                                    <h4 class="widget_title_text has_border">Donors</h4>
                                 </div>
+                                <?php $donors = get_field('donations'); ?>
                                 <div class="donor_post_wrapper">
                                     <div class="single_donor_post">
                                         <div class="donar_post_img"><a href="volunteer-details.html"><img src="assets/img/causes/donar1.jpg" alt="img"></a></div>
@@ -214,57 +216,6 @@ global $post;
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="single_donor_post">
-                                        <div class="donar_post_img"><a href="volunteer-details.html"><img src="assets/img/causes/donar2.jpg" alt="img"></a></div>
-                                        <div class="donar_post_content">
-                                            <h5 class="donar_name"><a href="volunteer-details.html">Miranda H. Hilix</a></h5>
-                                            <div class="donar_meta">
-                                                <a href="cause-details.html#" class="donar_amount theme-1 sep">$500</a>
-                                                <a href="cause-details.html#" class="donar_date theme-2"><i class="fal fa-calendar-alt"></i> February 20, 2022</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single_donor_post">
-                                        <div class="donar_post_img"><a href="volunteer-details.html"><img src="assets/img/causes/donar3.jpg" alt="img"></a></div>
-                                        <div class="donar_post_content">
-                                            <h5 class="donar_name"><a href="volunteer-details.html">Anayatulla Abbasi</a></h5>
-                                            <div class="donar_meta">
-                                                <a href="cause-details.html#" class="donar_amount theme-1 sep">$900</a>
-                                                <a href="cause-details.html#" class="donar_date theme-2"><i class="fal fa-calendar-alt"></i> February 20, 2022</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single_donor_post">
-                                        <div class="donar_post_img"><a href="volunteer-details.html"><img src="assets/img/causes/donar4.jpg" alt="img"></a></div>
-                                        <div class="donar_post_content">
-                                            <h5 class="donar_name"><a href="volunteer-details.html">Ahmadullah Fokir</a></h5>
-                                            <div class="donar_meta">
-                                                <a href="cause-details.html#" class="donar_amount theme-1 sep">$300</a>
-                                                <a href="cause-details.html#" class="donar_date theme-2"><i class="fal fa-calendar-alt"></i> February 20, 2022</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single_donor_post">
-                                        <div class="donar_post_img"><a href="volunteer-details.html"><img src="assets/img/causes/donar5.jpg" alt="img"></a></div>
-                                        <div class="donar_post_content">
-                                            <h5 class="donar_name"><a href="volunteer-details.html">Ahmed Riad</a></h5>
-                                            <div class="donar_meta">
-                                                <a href="cause-details.html#" class="donar_amount theme-1 sep">$500</a>
-                                                <a href="cause-details.html#" class="donar_date theme-2"><i class="fal fa-calendar-alt"></i> February 20, 2022</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single_donor_post">
-                                        <div class="donar_post_img"><a href="volunteer-details.html"><img src="assets/img/causes/donar6.jpg" alt="img"></a></div>
-                                        <div class="donar_post_content">
-                                            <h5 class="donar_name"><a href="volunteer-details.html">Andreu R.</a></h5>
-                                            <div class="donar_meta">
-                                                <a href="cause-details.html#" class="donar_amount theme-1 sep">$500</a>
-                                                <a href="cause-details.html#" class="donar_date theme-2"><i class="fal fa-calendar-alt"></i> February 20, 2022</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
 
                                 </div>
                             </div>

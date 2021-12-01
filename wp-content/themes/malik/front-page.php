@@ -1,4 +1,4 @@
-<?php get_header(); 
+<?php get_header('innerpage'); 
    get_template_part( 'template-parts/slider');
    get_template_part( 'template-parts/about-section');
    get_template_part( 'template-parts/causes-section'); ?>
@@ -10,18 +10,13 @@
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                <div class="support_images_active swiper-container dots_style">
                   <div class="swiper-wrapper">
+                     <?php $slider_images = get_field('slider');
+                     foreach($slider_images as $img) :
+                     ?>
                      <div class="support_img_single swiper-slide img_effect_white">
-                        <a href="volunteer.html"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bg/support1.jpg" alt="img"></a>
+                        <a href="#"><img src="<?php echo $img['home_join_us_image']['url']; ?>" alt="img"></a>
                      </div>
-                     <div class="support_img_single swiper-slide img_effect_white">
-                        <a href="volunteer.html"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bg/support3.jpg" alt="img"></a>
-                     </div>
-                     <div class="support_img_single swiper-slide img_effect_white">
-                        <a href="volunteer.html"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bg/support4.jpg" alt="img"></a>
-                     </div>
-                     <div class="support_img_single swiper-slide img_effect_white">
-                        <a href="volunteer.html"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bg/support3.jpg" alt="img"></a>
-                     </div>
+                     <?php endforeach; ?>
                   </div>
                   <!-- Add Pagination -->
                   <div class="swiper-pagination-join text-center"></div>
@@ -31,15 +26,14 @@
                <div class="support_wrapper">
                   <div class="section_title">
                      <span class="sub_title"><i class="fal fa-users"></i> Join Us</span>
-                     <h3 class="title">Become an volunteer
-                        for save children
+                     <h3 class="title">
+                        <?php echo get_field('home_join_us_title'); ?>
                      </h3>
                   </div>
-                  <p class="mb-45">NewLook unlike many traditional plastic surgery centers in San
-                     Diego, are industry recognized experts in a wide variety of with an
-                     cosmetic procedure and are dedicated
+                  <p class="mb-45">
+                     <?php echo get_field('home_join_us_description'); ?>
                   </p>
-                  <a href="volunteer.html" class="g_btn theme1_bg to_right2 i_right rad-30 p-45">Apply Here<i class="fal fa-long-arrow-right"></i><span></span></a>
+                  <a href="<?php echo get_field('home_join_us_button_link'); ?>" class="g_btn theme1_bg to_right2 i_right rad-30 p-45"><?php echo get_field('home_join_us_button_label'); ?><i class="fal fa-long-arrow-right"></i><span></span></a>
                </div>
             </div>
          </div>
@@ -50,36 +44,30 @@
          <div class="col-xxl-6 col-xl-6 col-lg-12 col-sm-12">
             <div class="section_title mb-55">
                <span class="sub_title"><i class="fal fa-heart"></i>Why Choose Us</span>
-               <h3 class="title">The perfect help</h3>
+               <h3 class="title"><?php echo get_field('home_why_choose_title'); ?></h3>
             </div>
             <div class="row">
+               <?php $home_why_choose_box_content = get_field('home_why_choose_box_content');
+               $i=1;
+               foreach($home_why_choose_box_content as $box) :
+               ?>
                <div class="col-xxl-6 col-xl-6 col-lg-6 col-sm-6">
-                  <div class="choose_single_card theme-2 p-rel mb-30">
-                     <div class="choose_abs theme-2">
-                        <i class="flaticon-map"></i>
+                  <div class="choose_single_card theme-<?php echo $i+1 ?> p-rel mb-30">
+                     <div class="choose_abs theme-<?php echo $i+1 ?>">
+                        <i class="<?php echo $box['about_us_why_choose_icon'] ?>"></i>
                      </div>
-                     <span class="card_number">01</span>
+                     <span class="card_number"><?php echo $i; ?></span>
                      <div class="choose_card_content">
-                        <h5 class="choose_card_title">Places to get lost</h5>
-                        <p>Charity is the largest global for
-                           crowdfunding community with
-                           connecting nonprofits.
+                        <h5 class="choose_card_title"><?php echo $box['about_us_why_choose_title'] ?></h5>
+                        <p>
+                           <?php echo $box['about_us_why_choose_description'] ?>
                         </p>
                      </div>
                   </div>
                </div>
-               <div class="col-xxl-6 col-xl-6 col-lg-6 col-sm-6">
-                  <div class="choose_single_card p-rel theme-3 mb-30">
-                     <div class="choose_abs theme-3">
-                        <i class="flaticon-user"></i>
-                     </div>
-                     <span class="card_number clr-theme-3">02</span>
-                     <div class="choose_card_content">
-                        <h5 class="choose_card_title">Free Refuge Shelter</h5>
-                        <p>Lorem ipsum dolor sit ametco bns ectetur adi pisicing elit sed do eiusmod tempor incid.</p>
-                     </div>
-                  </div>
-               </div>
+               <?php 
+               $i++;
+               endforeach; ?>
             </div>
          </div>
          <div class="col-xxl-6 col-xl-6 col-lg-12 col-sm-12 d-flex align-items-center text-center">
@@ -115,5 +103,5 @@
    </div>
 </div>
 <!--support area end-->
-<?php get_template_part( 'template-parts/newsfeeds-homepage');
-   get_footer(); ?>
+<?php //get_template_part( 'template-parts/newsfeeds-homepage');
+get_footer('innerpage'); ?>

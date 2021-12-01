@@ -32,3 +32,13 @@ function wpdocs_theme_setup() {
     add_image_size( 'custom-banner-cause', 950, 520, true );
 }
 
+// if( !current_user_can( 'administrator' ) ):
+function disable_acf_load_field( $field ) {
+
+$field['disabled'] = 1;
+var_dump($field); die();
+return $field;
+
+}
+add_filter('acf/load_field/name=donations', 'disable_acf_load_field');
+

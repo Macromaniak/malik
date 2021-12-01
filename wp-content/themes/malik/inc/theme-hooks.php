@@ -55,4 +55,20 @@
         add_theme_support( 'custom-logo', $defaults );
     }
     add_action( 'after_setup_theme', 'custom_logo' );
+
+    add_action('show_user_profile', 'my_user_profile_edit_action');
+    add_action('edit_user_profile', 'my_user_profile_edit_action');
+    function my_user_profile_edit_action($user) {
+      $trust_detail_value = $user->trust_description;
+    ?>
+      <h3>Trust details</h3>
+        <input name="trust_description" type="text" id="trust_description" value="<?php echo $trust_detail_value; ?>">
+    <?php 
+    }
+
+    add_action('personal_options_update', 'my_user_profile_update_action');
+    add_action('edit_user_profile_update', 'my_user_profile_update_action');
+    function my_user_profile_update_action($user_id) {
+      update_user_meta($user_id, 'trust_description', isset($_POST['trust_description']));
+    }
 ?>

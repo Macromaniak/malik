@@ -18,7 +18,7 @@ get_template_part( 'template-parts/title-section');
                                      <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="img"></a>
                                  </div>
                                  <span class="designation"><?php echo get_field('volunteer_designation'); ?></span>
-                                 <h5 class="member_name"><a href="volunteer-details.html"><?php the_title(); ?></a></h5>
+                                 <h5 class="member_name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
                                  <div class="member_social">
                                      <a href="volunteer.html#" class="facebook"><i class="fab fa-facebook-f"></i></a>
                                      <a href="volunteer.html#" class="twitter"><i class="fab fa-twitter"></i></a>

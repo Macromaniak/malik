@@ -20,6 +20,21 @@ Class MalikACFHandler {
 				'post_id'     => 'event_options',
 			) );
 
+
+		if ( function_exists( 'acf_add_options_page' ) ) {
+
+			acf_add_options_page(array(
+                'page_title' => 'Theme General Settings',
+                'menu_title' => 'Theme Settings',
+                'menu_slug' => 'mp-theme-settings',
+                'capability' => 'edit_posts',
+                'post_id' => 'theme_options',
+                'redirect' => false
+            ));
+
+		}
+	
+
 	}
 
 	public function populate_acf_select_choices_cf7()
