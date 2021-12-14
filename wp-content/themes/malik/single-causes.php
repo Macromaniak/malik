@@ -75,30 +75,68 @@ global $post;
                                     time I was diagnosed. Since then I have undergone over 20 cycles of chemotherapy, 50 sessions of
                                     radiotherapy and numerous operations to try and stabilise my disease.</p> -->
 
-                                    <?php echo get_field('main_content'); ?>
+                                    <?php 
+                                    echo do_shortcode('[Sassy_Social_Share]');
+                                    // the_content();
+                                    echo get_field('main_content'); ?>
 
-                                    <?php $volunteer = get_field('causes_volunteer');
-                                    $vol_description = get_field('volunteer_description', $volunteer);
-                                    $volunteer_image = get_the_post_thumbnail_url($volunteer, 'custom-thumb-volunteer');
-                                    $volunteer_title = get_the_title($volunteer);
-                                    $volunteer_designation = get_field('volunteer_designation', $volunteer);
+                                     <?php// $volunteer = get_field('causes_volunteer');
+                                    // $vol_description = get_field('volunteer_description', $volunteer);
+                                    // $volunteer_image = get_the_post_thumbnail_url($volunteer, 'custom-thumb-volunteer');
+                                    // $volunteer_title = get_the_title($volunteer);
+                                    // $volunteer_designation = get_field('volunteer_designation', $volunteer);
                                      ?>
-                                <div class="single_person_quote">
-                                    <i class="icofont-speech-comments"></i>
-                                    <div class="person_image"><a href="volunteer-details.html"><img src="<?php echo $volunteer_image; ?>" alt="img"></a></div>
-                                    <div class="person_quote_text">
-                                        <p>
-                                        	<?php echo $vol_description; ?>
-                                        </p>
-                                        <div class="person_designation">
-                                            <h5 class="person_nam"><a href="cause-details.html#"><?php echo $volunteer_title; ?></a></h5>
-                                            <span class="person_surname"><?php echo $volunteer_designation; ?></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--<div class="single_person_quote">-->
+                                <!--    <i class="icofont-speech-comments"></i>-->
+                                <!--    <div class="person_image"><a href="volunteer-details.html"><img src="<?php //echo $volunteer_image; ?>" alt="img"></a></div>-->
+                                <!--    <div class="person_quote_text">-->
+                                <!--        <p>-->
+                                <!--        	<?php //echo $vol_description; ?>-->
+                                <!--        </p>-->
+                                <!--        <div class="person_designation">-->
+                                <!--            <h5 class="person_nam"><a href="cause-details.html#"><?php //echo $volunteer_title; ?></a></h5>-->
+                                <!--            <span class="person_surname"><?php //echo $volunteer_designation; ?></span>-->
+                                <!--        </div>-->
+                                <!--    </div>-->
+                                <!--</div>-->
                                 <p class="single_border pb-45 mb-50">
                                 	<?php echo get_field('content_on_bottom'); ?>
                                 </p>
+                                
+                                <div class="single_donation_payment single_border mb-50 pb-30 cause-media-files">
+                                        <h5 class="single_title mb-0">Images & Videos</h5>
+                                        <br>
+                                        <div class="row">
+                                            <?php $media = get_field('cause_media');
+                                            // var_dump($media);
+                                            foreach($media as $m)
+                                            {
+                                                if($m['acf_fc_layout'] == 'video_link')
+                                                    {
+                                                    $item_url = $m['video_link'];
+                                                    $item_thumb = get_template_directory_uri().'/assets/img/download.jpeg';
+                                                    }
+                                                else if($m['acf_fc_layout'] == 'video_file')
+                                                    {
+                                                    $item_url = $m['video_file']['url'];
+                                                    $item_thumb = get_template_directory_uri().'/assets/img/download.jpeg';
+                                                    }
+                                                else
+                                                    {
+                                                    $item_url = $m['image']['url'];
+                                                    $item_thumb = $item_url;
+                                                    }
+                                                
+                                            ?>
+                                            <div class="col-md-3">
+                                                <a href="<?php echo $item_url; ?>" class="glightbox" data-gallery="gallery1">
+                                                  <img src="<?php echo $item_thumb; ?>" alt="image" />
+                                                </a>
+                                            </div>
+                                            <?php } ?>
+                                        </div>
+                                </div>
+                                    
 
                                     <div class="single_donation_input single_border mb-50 pb-30">
                                         <!-- <div class="donation_submit_wrapper mb-20">
@@ -107,6 +145,8 @@ global $post;
                                                 <input type="text" placeholder="$100">
                                             </div>
                                         </div> -->
+                                        <h5 class="single_title mb-0">Donate</h5>
+                                        <br>
                                         <?php
                                         $preset_amounts = get_field('preset_amounts', 'causes_settings');
                                         ?>
@@ -120,17 +160,20 @@ global $post;
                                             ?>
                                         	<!-- <button class="input_value">Custom</button> -->
                                         </div>
-                                    </div>
-                                    <div class="single_donation_payment single_border mb-50 pb-30">
-                                        <h5 class="single_title mb-0">Payment Method</h5>
-                                        <div class="payment_icons">
-                                            <a href="cause-details.html#"><i class="icofont-amazon"></i></a>
-                                            <a href="cause-details.html#"><i class="icofont-paypal"></i></a>
-                                            <a href="cause-details.html#"><i class="icofont-visa"></i></a>
-                                            <a href="cause-details.html#"><i class="icofont-cash-on-delivery"></i></a>
-                                            <a href="cause-details.html#"><i class="icofont-google-wallet-alt-3"></i></a>
+                                        <div class ="crypt-pay">
+                                            <?php echo do_shortcode('[mcc_donations alignment="" currencies="BTC" primary_currency="BTC" show_currencies_as_icons="" show_currencies_as_select="1" show_currency_as_text="1" show_address="" qr_code_enabled="1" qr_code_max_width="180"]');  ?>
                                         </div>
                                     </div>
+                                    <!--<div class="single_donation_payment single_border mb-50 pb-30">-->
+                                    <!--    <h5 class="single_title mb-0">Payment Method</h5>-->
+                                    <!--    <div class="payment_icons">-->
+                                    <!--        <a href="cause-details.html#"><i class="icofont-amazon"></i></a>-->
+                                    <!--        <a href="cause-details.html#"><i class="icofont-paypal"></i></a>-->
+                                    <!--        <a href="cause-details.html#"><i class="icofont-visa"></i></a>-->
+                                    <!--        <a href="cause-details.html#"><i class="icofont-cash-on-delivery"></i></a>-->
+                                    <!--        <a href="cause-details.html#"><i class="icofont-google-wallet-alt-3"></i></a>-->
+                                    <!--    </div>-->
+                                    <!--</div>-->
                                     <div class="single_donation_info single_border mb-50 pb-45">
                                         <h5 class="single_title">Personal Information</h5>
                                             <div class="input_info_wrapper">

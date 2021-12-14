@@ -21,15 +21,36 @@
             );
             $latest_causes = get_posts( $args );
             // var_dump($latest_causes);
-            $count = 0;
+            // $count = 0;
             foreach ($latest_causes as $cause) {
-               echo $count;
-               $count++;
+            //   echo $count;
+            //   $count++;
             ?>
 
             <div class="single_cause swiper-slide mb-30">
                <div class="single_cause_img img_effect_white p-rel">
-                  <a href="<?php echo get_the_permalink($cause); ?>"><img src="<?php echo get_the_post_thumbnail_url($cause); ?>" alt="img"></a>
+                   
+                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                      <?php $slider_images = get_field('cause_slider_images', $cause); 
+                    $count = 0;
+                      foreach($slider_images as $image):
+                      ?>
+                    <div class="carousel-item <?php if($count==0){ echo "active";} ?>">
+                        <a href="<?php echo get_the_permalink($cause); ?>">
+                            <img src="<?php echo $image['images']['sizes']['cause-thumb']; ?>" class="d-block w-100" alt="img">
+                        </a>
+                      <!--<img class="d-block w-100" src="<?php //echo $image['images']['url']; ?>" alt="First slide">-->
+                    </div>
+                    <?php 
+                    $count++;
+                    endforeach; ?>
+                    
+                  </div>
+                 
+                </div>  
+                 
+                  <!--<a href="<?php //echo get_the_permalink($cause); ?>"><img src="<?php //echo get_the_post_thumbnail_url($cause); ?>" alt="img"></a>-->
                   <?php
                   $goal = get_field('cause_goal', $cause);
                   $cause_raised = get_field('cause_raised', $cause);
@@ -40,7 +61,7 @@
                   $cats = $cats[0]->name;
                   ?>
                   <div class="progress_wrapper pbar_1">
-                     <div class="progress_circle" data-percentage="<?php echo $percentage;  ?>">
+                     <div class="progress_circle" data-percentage="<?php echo intval($percentage);  ?>">
                         <span class="progress-left">
                         <span class="progress-bar"></span>
                         </span>

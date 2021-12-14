@@ -1,7 +1,10 @@
 <?php get_header('innerpage'); 
-   get_template_part( 'template-parts/slider');
-   get_template_part( 'template-parts/about-section');
-   get_template_part( 'template-parts/causes-section'); ?>
+    get_template_part( 'template-parts/slider');
+    get_template_part( 'template-parts/categories-section');
+    get_template_part( 'template-parts/about-section');
+    get_template_part( 'template-parts/causes-section');
+   ?>
+   
 <!--support area start-->
 <div class="support_area mtm-294 pb-90">
    <div class="container">

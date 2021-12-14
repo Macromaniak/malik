@@ -42,3 +42,4 @@ return $field;
 }
 add_filter('acf/load_field/name=donations', 'disable_acf_load_field');
 
+add_filter( 'https_ssl_verify', '__return_false' );
