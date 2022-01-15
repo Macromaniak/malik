@@ -9,7 +9,7 @@
  * @since Twenty Twenty-One 1.0
  */
 
-get_header(); ?>
+get_header('innerpage'); ?>
     <section class="breadcrumb_area breadcrumb_overlay" data-background="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bg/breadcrum_bg_2.jpg">
         <div class="container">
             <div class="row">
@@ -57,4 +57,4 @@ get_header(); ?>
         </div>
     </div>
 
-<?php get_footer();
+<?php get_footer('innerpage');

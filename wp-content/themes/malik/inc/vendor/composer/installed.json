@@ -1,0 +1,44 @@
+{
+    "packages": [
+        {
+            "name": "mycryptocheckout/api",
+            "version": "20211021",
+            "version_normalized": "20211021",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mycryptocheckout/api.git",
+                "reference": "f9e33f34ab6dff5d7cfa2c327d2552f19bfd5f08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mycryptocheckout/api/get/f9e33f34ab6dff5d7cfa2c327d2552f19bfd5f08.zip",
+                "reference": "f9e33f34ab6dff5d7cfa2c327d2552f19bfd5f08",
+                "shasum": ""
+            },
+            "time": "2021-10-21T08:06:54+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "mycryptocheckout\\api\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-only"
+            ],
+            "description": "MyCryptoCheckout API for communicating with the API server.",
+            "homepage": "https://mycryptocheckout.com/",
+            "keywords": [
+                "mycryptocheckout"
+            ],
+            "support": {
+                "issues": "https://bitbucket.org/mycryptocheckout/api/issues",
+                "source": "https://bitbucket.org/mycryptocheckout/api/src/f9e33f34ab6dff5d7cfa2c327d2552f19bfd5f08/?at=20211021"
+            },
+            "install-path": "../mycryptocheckout/api"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

@@ -18,4 +18,9 @@ jQuery(function(){
     loop: true,
     autoplayVideos: true
     });
+    
+    jQuery("#select-coin").change(function(){
+        var link = jQuery(this).val();
+        jQuery('#pay-link').attr("href", link);
+    })
 })

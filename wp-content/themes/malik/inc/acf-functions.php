@@ -33,6 +33,19 @@ Class MalikACFHandler {
             ));
 
 		}
+		
+	    if ( function_exists( 'acf_add_options_page' ) ) {
+
+			acf_add_options_page(array(
+                'page_title' => 'Donation options',
+                'menu_title' => 'Donation options',
+                'menu_slug' => 'donation-options',
+                'capability' => 'edit_posts',
+                'post_id' => 'donation_options',
+                'redirect' => false
+            ));
+
+		}
 	
 
 	}

@@ -7,104 +7,105 @@
                 <div class="row">
                     <div class="col-xxl-6 col-xl-6 col-lg-5">
                         <div class="single_donation_img_wrapper pr-30">
+                            <?php $images = get_field('general_cause_images'); 
+                            foreach($images as $image){
+                            ?>
                             <div class="single_donation_img mb-40">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/donation/donation_single1.jpg" alt="img">
+                                <img src="<?php echo $image['cause_image']['url']; ?>" alt="img">
                             </div>
-                            <div class="single_donation_img mb-40">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/donation/donation_single2.jpg" alt="img">
-                            </div>
+                            <?php } ?>
+                           
                         </div>
                     </div>
                     <div class="col-xxl-6 col-xl-6 col-lg-7">
                         <div class="single_donation_content donation_border">
                             <div class="section_title">
-                                <a href="donation.html#" class="sub_title sub_title_2">Water</a>
+                                <a href="donation.html#" class="sub_title sub_title_2"><?php echo get_field('general_cause_cat'); ?></a>
                             </div>
-                            <h4 class="donation_title">The community state of the art <br>
-                                recurring donation.</h4>
-                            <p>generous actions or donations to aid the poor, ill, or needy: to devote
-                                one's life to charity. something given to a person or persons in need;
-                                alms: She asked for work, not charity. a charitable act or work.</p>
-                            <div class="feature_progress_wrapper mb-25 mt-35">
-                                <div class="progress feature_progress">
-                                    <div class="progress-bar" role="progressbar" data-width="50%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
-                                </div>
-                            </div>
-                            <div class="single_cause_meta mb-20">
-                                <div class="single_meta feature_meta feature_border d-inline-block">
-                                    <span class="meta_text red_clr"><i class="fal fa-globe"></i> Goal</span>
-                                    <span class="meta_price red_clr"><i class="fa fa-inr"></i>4,5100</span>
-                                </div>
-                                <div class="single_meta feature_meta feature_border d-inline-block">
-                                    <span class="meta_text red_clr"><i class="fal fa-users"></i> Raised</span>
-                                    <span class="meta_price red_clr"><i class="fa fa-inr"></i>45,300</span>
-                                </div>
-                                <div class="single_meta feature_meta d-inline-block">
-                                    <span class="meta_text red_clr"><i class="fal fa-reply"></i> To go</span>
-                                    <span class="meta_price red_clr"><i class="fa fa-inr"></i>45,200</span>
-                                </div>
-                            </div>
+                            <h4 class="donation_title"><?php echo get_field('general_cause_title'); ?></h4>
+                            
+                            <?php echo get_field('general_cause_details'); ?>
+                           
                         </div>
-                        <div class="single_donation_input donation_border">
-                            <div class="donation_submit_wrapper mb-20">
-                                <!-- <div class="donation_submit_box">
-                                    <button type="submit">$</button>
-                                    <input type="text" placeholder="$100">
-                                </div> -->
+                        
+                         <div class="single_donation_input single_border mb-50 pb-30">
+                                       
+                                        <h5 class="single_title mb-0">Donate</h5>
+                                        <br>
+                                        <?php
+                                        // $preset_amounts = get_field('preset_amounts', 'causes_settings');
+                                        ?>
+                                       
+                                        <div class ="crypt-pay">
+                                            <select id="select-coin">
+                                            <?php //echo do_shortcode('[mcc_donations alignment="" currencies="BTC" primary_currency="BTC" show_currencies_as_icons="" show_currencies_as_select="1" show_currency_as_text="1" show_address="" qr_code_enabled="1" qr_code_max_width="180"]');  
+                                            echo //do_shortcode('[mcc_donations alignment="" currencies="BTC" primary_currency="random" show_currencies_as_icons="1" show_currencies_as_select="1" show_currency_as_text="1" show_address="1" qr_code_enabled="1" qr_code_max_width="180"]');
+                                            $paylinks = get_field('donation_options', 'donation_options');
+                                            $count = 1;
+                                            $first_link = '';
+                                            foreach($paylinks as $pl):
+                                                if($count == 1)
+                                                $first_link = $pl['pay_link'];
+                                            ?>
+                                            
+                                                <option value = '<?php echo $pl['pay_link']; ?>'><?php echo $pl['coin']; ?></option>
+                                            
+                                            <?php
+                                            $count++;
+                                            endforeach; ?>
+                                            </select>
+                                            <a class="g_btn hbtn_1 to_right1 rad-30" id='pay-link' target="_blank" href="<?php echo $first_link; ?>">Donate<span></span></a>
+                                        </div>
                             </div>
-                            <?php
-                                $preset_amounts = get_field('preset_amounts', 'causes_settings');
-                            ?>
-                            <div class="input_value_wrapper">
-                                <?php foreach ($preset_amounts as $amount) {                    
-                                ?>
-                                <button class="input_value" value="<?php echo $amount['amount']; ?>"><i class="fa fa-inr"></i><?php echo $amount['amount']; ?></button>
-                                <?php
-                                }
-                                ?>
-                                            <!-- <button class="input_value">Custom</button> -->
-                            </div>
-                        </div>
-                        <div class="single_donation_payment donation_border">
-                            <h5 class="single_title mb-0">Payment Method</h5>
-                            <div class="payment_icons">
-                                <a href="donation.html#"><i class="icofont-amazon"></i></a>
-                                <a href="donation.html#"><i class="icofont-paypal"></i></a>
-                                <a href="donation.html#"><i class="icofont-visa"></i></a>
-                                <a href="donation.html#"><i class="icofont-cash-on-delivery"></i></a>
-                                <a href="donation.html#"><i class="icofont-google-wallet-alt-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="single_donation_info">
-                            <h5 class="single_title">Personal Information</h5>
-
-                            <div class="input_info_wrapper">
-                                <form action="<?php echo site_url() ?>/stripe-donation/" method="POST">
-                                    <div class="input_info_name info_input"><input type="text" placeholder="Enter full name" name="payee-name"><i class="fal fa-user"></i></div>
-                                    <div class="input_info_email info_input"><input type="email" placeholder="Enter email" name="payee-email"><i class="fal fa-envelope"></i></div>
-                                
-                            </div>
-                            <div class="submit_info_wrapper d-inline-flex">
-                                <div class="donation_submit_wrapper">
-                                    <div class="donation_submit_box w_208">
-                                        <button type="submit">Donate</button>
-                                        <input type="text" placeholder="Amount" name="amount" required>
-                                        <input type="hidden" name="cause_id" value="general">
-                                        <input type="hidden" name="cause_title" value="">
+                            <div class="single_donation_info single_border mb-50 pb-45">
+                                        <h5 class="single_title">Submit the transaction details</h5>
+                                           
+                                        <div class="submit_info_wrapper">
+                                            <div class="donation_submit_wrapper">
+                                                <form action="" method="POST">
+                                                <div class="donation_submit_box w_208">
+                                                    <!--<button type="submit">Donate</button>-->
+                                                    <!--<input type="text" placeholder="Amount" name="amount" required>-->
+                                                    <input type="hidden" name="cause_id" value="<?php echo $post->ID; ?>">
+                                                    <input type="hidden" name="cause_title" value="<?php echo get_the_title($post); ?>">
+                                                    <input type="text" placeholder='Transaction ID' name="trans_id" required>
+                                                    <input type='submit' name=submit-transac-id value='Submit'>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            <?php 
+                                            if(isset($_POST['submit-transac-id'])){
+                                            $cause_id = 'General cause';
+                                            $cause_name = 'General cause';
+                                            $trans_id = $_POST['trans_id'];
+                                            $embed = '<h2><strong>Cause title : </strong>'.$cause_name.'</h2><br><h2><strong>Cause ID : </strong>'.$cause_id.'</h2>';
+                                            
+                                            if(!empty($trans_id))
+                                            {
+                                                $post_id = wp_insert_post(array (
+                                			    'post_type' => 'donations',
+                                			    'post_title' => $trans_id,
+                                			    'post_content' => $embed,
+                                			    'post_status' => 'publish',
+                                			    'comment_status' => 'closed',
+                                			    'ping_status' => 'closed',      
+                                				));
+                                				
+                                				if(!empty($post_id))
+                                				{
+                                				    echo "<h3 class='success-msg-donation'>Thank you for the donation</h3>";
+                                				}
+                                            }
+                                            
+                                            }?>
+                                            
+                                            
+                                        </div>
                                     </div>
-                                    </form>
-                                </div>
-                                <div class="submit_info_button">
-                                    <a href="cause.html" class="g_btn hbtn_1 to_right1 i_left rad-30 p-35"><i class="fal fa-heart"></i> Explore Causes<span></span></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <!-- <div class="single_donation_info paypal">
-                            <div class="paypal-submit-block">
-                                <?php //echo do_shortcode('[wpedon id=262]'); ?>
-                            </div>
-                        </div> -->
+                        
+                        
+                        
+                        
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ get_template_part( 'template-parts/title-section');
                                   $cause_expiry = strtotime(get_field('cause_expiry'));
                                   $now = strtotime(date('d/m/Y'));
 
-                                  if($goal_to_go >0)
+                                  if($goal_to_go >0 || empty($goal))
                                   {
                                   
                                 ?>
@@ -36,9 +36,11 @@ get_template_part( 'template-parts/title-section');
                                             <div class="single_cause_img w_img img_effect_white">
                                                 <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="img"></a>
                                             </div>
+                                            <?php if(!empty($goal)): ?>
                                             <div class="progress cause_progress">
                                                 <div class="progress-bar" role="progressbar" data-width="<?php echo $percentage ?>%" aria-valuenow="<?php echo $percentage ?>" aria-valuemin="0" aria-valuemax="100"><span><?php echo $percentage; ?>%</span></div>
                                             </div>
+                                            <?php endif; ?>
                                         </div>
 
                                         <div class="single_cause_content">
@@ -46,20 +48,22 @@ get_template_part( 'template-parts/title-section');
                                                 <span class="sub_title"><?php echo $cats; ?></span>
                                                 <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                             </div>
+                                            <?php if(!empty($goal)): ?>
                                             <div class="single_cause_meta">
                                                 <div class="single_meta d-inline-block">
                                                     <span class="meta_text clr_theme1"><i class="fal fa-globe"></i> Goal</span>
-                                                    <span class="meta_price clr_theme1"><i class="fa fa-inr"></i><?php echo $goal; ?></span>
+                                                    <span class="meta_price clr_theme1"><i class="fa fa-usd"></i><?php echo $goal; ?></span>
                                                 </div>
                                                 <div class="single_meta d-inline-block">
                                                     <span class="meta_text clr_theme2"><i class="fal fa-users"></i> Raised</span>
-                                                    <span class="meta_price clr_theme2"><?php echo '<i class="fa fa-inr"></i>'.$cause_raised; ?></span>
+                                                    <span class="meta_price clr_theme2"><?php echo '<i class="fa fa-usd"></i>'.$cause_raised; ?></span>
                                                 </div>
                                                 <div class="single_meta d-inline-block">
                                                     <span class="meta_text clr_theme3"><i class="fal fa-reply"></i> To go</span>
-                                                    <span class="meta_price clr_theme3"><?php echo '<i class="fa fa-inr"></i>'.$goal_to_go; ?></span>
+                                                    <span class="meta_price clr_theme3"><?php echo '<i class="fa fa-usd"></i>'.$goal_to_go; ?></span>
                                                 </div>
                                             </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>

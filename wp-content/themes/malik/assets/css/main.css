@@ -12883,5 +12883,39 @@ button.side-info-close:hover {
 .submit_btn i:is(.i_left) {
   margin-right: 5px;
 }
-
+.crypt-pay{
+    display: inline-flex;
+}
+.crypt-pay select{
+    min-width: 140px;
+    font-weight: 700;
+    height: 40px;
+    line-height: 60px;
+    margin-right: 20px;
+    padding: 10px;
+    margin-top: 10px;
+}
+.submit_info_wrapper .donation_submit_box:is(.w_208) {
+    width: 100%;
+    margin-right: 15px;
+    border-radius: 0;
+}
+.submit_info_wrapper .donation_submit_box:is(.w_208) input[type=text]{
+    border: none;
+    width: 100%;
+    border-top: none;
+    border-bottom: none;
+    box-shadow: none;
+}
+.submit_info_wrapper .donation_submit_box:is(.w_208) [type=submit]{
+    border: 1px solid var(--clr-theme-2);
+    padding: 0 45px;
+    background-color: var(--clr-theme-2);
+    color: var(--clr-common-white);
+}
+.success-msg-donation{
+    width: 100%;
+    font-size: 25px;
+    padding-top: 16px;
+}
 /*# sourceMappingURL=main.css.map */
